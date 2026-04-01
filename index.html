@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seth at Sunset</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<title>Seth at Sunset</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body data-bg="zoo">
 
 <div class="game">
 
   <div class="left">
-    <img id="portrait" src="assets/portraits/seth_neutral.png" />
-    <div id="chapter">Chapter 1 — Zoo</div>
+    <img id="portrait" src="assets/portraits/seth_neutral.png">
+    <div id="chapter"></div>
     <div id="vibe"></div>
   </div>
 
   <div class="right">
-    <div id="speaker">Narrator</div>
+    <div id="speaker"></div>
     <div id="text"></div>
-
-    <div id="phone" class="hidden"></div>
-
     <div id="choices"></div>
   </div>
 
 </div>
 
-<div id="ending" class="hidden">
-  <img id="cg" />
+<!-- PHONE -->
+<div id="phoneOverlay" class="overlay hidden">
+  <div class="phone">
+    <div id="messages"></div>
+    <button onclick="closePhone()">Close</button>
+  </div>
+</div>
+
+<!-- ENDING -->
+<div id="ending" class="overlay hidden">
+  <img id="cg">
   <h2 id="endTitle"></h2>
-  <p id="endSub"></p>
   <p id="endBody"></p>
-  <button onclick="start()">Play Again</button>
+  <button onclick="start()">Replay</button>
 </div>
-
-<div id="gallery" class="hidden">
-  <h2>Gallery</h2>
-  <div id="galleryGrid"></div>
-  <button onclick="closeGallery()">Close</button>
-</div>
-
-<button id="galleryBtn" onclick="openGallery()">Gallery</button>
 
 <script src="scenes.js"></script>
 <script src="script.js"></script>
