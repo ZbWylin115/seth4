@@ -1,77 +1,139 @@
 const SCENES = {
 
 intro:{
-  chapter:"Zoo",
-  bg:"zoo",
-  speaker:"Narrator",
-  portrait:"seth_neutral.png",
-  text:`You spot Seth at the zoo.
+bg:"zoo",
+speaker:"Narrator",
+portrait:"seth_neutral.png",
+text:`The zoo hums with low, lazy energy.
 
-He notices you immediately.`,
-  choices:[
-    {text:"Flirt",effect:{chemistry:2},next:"flirt"},
-    {text:"Be normal",effect:{comfort:2},next:"normal"}
-  ]
+Somewhere between the animal calls and the distant chatter of families, you spot him.
+
+Seth.
+
+He’s leaning against a railing, half-listening to someone, half somewhere else entirely.
+
+Then his eyes flick to you.
+
+You’ve been noticed.`,
+choices:[
+{text:"Open bold",effect:{chem:2},next:"flirt"},
+{text:"Play it cool",effect:{comfort:2},next:"calm"}
+]
 },
 
 flirt:{
-  speaker:"Seth",
-  portrait:"seth_flirty.png",
-  text:`Bold. I respect it.`,
-  choices:[{text:"Continue",next:"patio"}]
+speaker:"Seth",
+portrait:"seth_flirty.png",
+text:`“…You always start conversations like that?”
+
+He studies you.
+
+“…Not bad.”`,
+choices:[{text:"Continue",next:"walk"}]
 },
 
-normal:{
-  speaker:"Seth",
-  portrait:"seth_happy.png",
-  text:`Alright, you're not insane. Good start.`,
-  choices:[{text:"Continue",next:"patio"}]
+calm:{
+speaker:"Seth",
+portrait:"seth_happy.png",
+text:`“You seem normal. That’s rare here.”`,
+choices:[{text:"Continue",next:"walk"}]
 },
 
-patio:{
-  chapter:"Patio",
-  bg:"patio",
-  portrait:"seth_drunk_smirk.png",
-  text:`You get drinks.`,
-  choices:[
-    {text:"Drink heavy",effect:{buzz:2,chemistry:2},next:"text"},
-    {text:"Stay chill",effect:{comfort:2},next:"text"}
-  ]
+walk:{
+speaker:"Narrator",
+portrait:"seth_happy.png",
+text:`You walk together.
+
+The path is quieter. Cooler. Intentional.
+
+Seth doesn’t rush conversation.
+
+Which somehow makes everything feel more important.`,
+choices:[
+{text:"Ask about animals",effect:{comfort:1},next:"animals"},
+{text:"Ask about life",effect:{chem:1},next:"life"}
+]
 },
 
-text:{
-  chapter:"Texts",
-  bg:"texting",
-  phone:[
-    {side:"incoming",text:"Seth: You alive?"},
-    {side:"incoming",text:"Seth: Or did I win?"}
-  ],
-  text:`You smile at your phone.`,
-  choices:[
-    {text:"Flirty reply",effect:{chemistry:2},next:"hike"},
-    {text:"Sincere reply",effect:{comfort:2},next:"hike"}
-  ]
+animals:{
+speaker:"Seth",
+portrait:"seth_happy.png",
+text:`“People think this job is about animals.
+
+It’s not.
+
+It’s about attention.”`,
+choices:[{text:"Continue",next:"patio_intro"}]
+},
+
+life:{
+speaker:"Seth",
+portrait:"seth_flirty.png",
+text:`“I hike. I travel. I raise two kids who think I’m embarrassing.”
+
+He glances at you.
+
+“…They’re right.”`,
+choices:[{text:"Continue",next:"patio_intro"}]
+},
+
+patio_intro:{
+bg:"patio",
+speaker:"Narrator",
+portrait:"seth_drunk_smirk.png",
+text:`The patio glows warm.
+
+Drinks arrive.
+
+The night loosens just enough.`,
+choices:[
+{text:"Drink more",effect:{chem:2,buzz:2},next:"patio_mid"},
+{text:"Stay sharp",effect:{respect:2},next:"patio_mid"}
+]
+},
+
+patio_mid:{
+speaker:"Seth",
+portrait:"seth_drunk.png",
+text:`“You’re interesting,” he says.
+
+“Which is either very good… or very dangerous.”`,
+choices:[
+{text:"Lean in",effect:{chem:2},next:"texting"},
+{text:"Hold steady",effect:{comfort:2},next:"texting"}
+]
+},
+
+texting:{
+bg:"text",
+speaker:"Narrator",
+portrait:"seth_happy.png",
+text:`Later that night, your phone lights up.`,
+phone:[
+{side:"in",text:"Seth: You alive?"},
+{side:"in",text:"Seth: Or did I win?"}
+],
+choices:[
+{text:"Flirty reply",effect:{chem:2},next:"hike"},
+{text:"Sincere reply",effect:{comfort:2},next:"hike"}
+]
 },
 
 hike:{
-  chapter:"Hike",
-  bg:"hike",
-  portrait:"seth_sad.png",
-  text:`This got real.`,
-  choices:[
-    {text:"Go real",effect:{respect:2},flags:{real:true},next:"ending"},
-    {text:"Go hot",effect:{chemistry:2,boldness:2},flags:{passion:true},next:"ending"}
-  ]
+bg:"hike",
+speaker:"Narrator",
+portrait:"seth_sad.png",
+text:`The trail opens into something real.
+
+No noise.
+
+No distractions.
+
+Just him.`,
+choices:[
+{text:"Go real",effect:{real:1},next:"ending"},
+{text:"Go passion",effect:{passion:1},next:"ending"}
+]
 }
 
 };
-
-const ENDINGS={
-true:{title:"Real Thing",image:"cg_true.png"},
-passion:{title:"Patio Heat",image:"cg_passionate.png"},
-friend:{title:"Friend Route",image:"cg_friendzone.png"},
-sad:{title:"Almost",image:"cg_bittersweet.png"},
-bad:{title:"Too Much",image:"cg_bad.png"}
-};
-
-const ORDER=["true","passion","friend","sad","bad"];
