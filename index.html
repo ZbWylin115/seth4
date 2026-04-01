@@ -7,102 +7,44 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-bg="zoo">
-  <div class="page-shell">
-    <div class="game-shell">
 
-      <header class="topbar">
-        <div>
-          <h1>Seth at Sunset</h1>
-          <p class="subtitle">A spicy, campy little zoo dating sim</p>
-        </div>
+<div class="game">
 
-        <div class="topbar-actions">
-          <button id="galleryBtn" class="util-btn ghost-btn">Gallery</button>
-          <button id="restartBtn" class="util-btn">Restart</button>
-        </div>
-      </header>
-
-      <main class="main-grid">
-        <aside class="left-panel">
-          <div class="portrait-card">
-            <div class="portrait-tag">SETH</div>
-            <div class="portrait-wrap">
-              <img id="portraitImg" src="assets/portraits/seth_happy.png" alt="Seth portrait" />
-            </div>
-          </div>
-
-          <div class="status-card">
-            <div class="status-title">Vibe Check</div>
-            <div id="vibeText" class="status-text">Warm afternoon. Mild intrigue.</div>
-          </div>
-
-          <div class="status-card">
-            <div class="status-title">Route Notes</div>
-            <div id="routeNotes" class="status-text">
-              Seth appears sarcastic, employed, and distressingly handsome.
-            </div>
-          </div>
-
-          <div class="status-card">
-            <div class="status-title">Current Chapter</div>
-            <div id="chapterText" class="status-text">Chapter 1 — Zoo</div>
-          </div>
-        </aside>
-
-        <section class="story-panel">
-          <div class="nameplate-row">
-            <div id="nameplate" class="nameplate">Narrator</div>
-            <div id="sceneTag" class="scene-tag">Zoo</div>
-          </div>
-
-          <div id="textBox" class="text-box">
-            Loading handsome zookeeper...
-          </div>
-
-          <div id="phoneBox" class="phone-box hidden">
-            <div class="phone-header">Messages</div>
-            <div id="phoneMessages" class="phone-messages"></div>
-          </div>
-
-          <div id="choices" class="choices"></div>
-        </section>
-      </main>
-
-      <div id="endingOverlay" class="overlay hidden">
-        <div class="ending-card">
-          <div class="ending-cg">
-            <img id="endingPortrait" src="assets/cg/cg_true.png" alt="Ending CG" />
-          </div>
-
-          <div class="ending-meta">
-            <div class="ending-label">ENDING UNLOCKED</div>
-            <h2 id="endingTitle">The Real Thing</h2>
-            <p id="endingSubtitle">This might actually hold.</p>
-            <div id="endingBody" class="ending-body"></div>
-
-            <div class="ending-actions">
-              <button id="playAgainBtn" class="util-btn">Play Again</button>
-              <button id="closeEndingBtn" class="util-btn ghost-btn">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="galleryOverlay" class="overlay hidden">
-        <div class="gallery-card">
-          <div class="gallery-header">
-            <h2>Ending Gallery</h2>
-            <button id="closeGalleryBtn" class="util-btn ghost-btn">Close</button>
-          </div>
-
-          <div id="galleryGrid" class="gallery-grid"></div>
-        </div>
-      </div>
-
-    </div>
+  <div class="left">
+    <img id="portrait" src="assets/portraits/seth_neutral.png" />
+    <div id="chapter">Chapter 1 — Zoo</div>
+    <div id="vibe"></div>
   </div>
 
-  <script src="scenes.js"></script>
-  <script src="script.js"></script>
+  <div class="right">
+    <div id="speaker">Narrator</div>
+    <div id="text"></div>
+
+    <div id="phone" class="hidden"></div>
+
+    <div id="choices"></div>
+  </div>
+
+</div>
+
+<div id="ending" class="hidden">
+  <img id="cg" />
+  <h2 id="endTitle"></h2>
+  <p id="endSub"></p>
+  <p id="endBody"></p>
+  <button onclick="start()">Play Again</button>
+</div>
+
+<div id="gallery" class="hidden">
+  <h2>Gallery</h2>
+  <div id="galleryGrid"></div>
+  <button onclick="closeGallery()">Close</button>
+</div>
+
+<button id="galleryBtn" onclick="openGallery()">Gallery</button>
+
+<script src="scenes.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
